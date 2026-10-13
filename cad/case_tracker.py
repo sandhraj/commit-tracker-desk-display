@@ -10,21 +10,25 @@ radius; every side edge one 1.5 mm radius.
 The screen is a white grille (rounded square windows, plain border) over a
 diffuser, a 10 mm egg-crate grid and WS2812B panels at 10 mm pitch.
 
-Usage:  WEEKS=53 python case_tracker.py out_dir   (full year, 574 mm wide)
-        WEEKS=13 python case_tracker.py out_dir   (3 months, 174 mm wide)
+Usage:  COLS=56 python case_tracker.py out_dir   (year: 53 weeks + 3, 604 mm wide)
+        COLS=16 python case_tracker.py out_dir   (quarter: 13 weeks + 3, 204 mm wide)
+
+COLS is the number of LED columns the panels provide (8 per 8x8 panel, 32 per
+8x32). Every column is visible; how weeks, markers and spare columns map onto
+them is decided in firmware.
 
 Coordinates: X = width, Y = up, Z = towards the viewer (mm).
 """
 import math, json, sys, os
 import cadquery as cq
 
-COLS = int(os.environ.get('WEEKS', '53'))   # 53 = full year, 13 = quarter
+COLS = int(os.environ.get('COLS', '56'))    # 56 = year (8x32 + 3 x 8x8), 16 = quarter (2 x 8x8)
 ROWS, PITCH = 7, 10.0
 WIN, WIN_R = 8.6, 1.5
 GRID_WALL = 1.2
 GRID_MARGIN = 13.0             # grille border beside the squares
 BEZEL = 9.0                    # body border beside the grille
-W = COLS * PITCH + 2 * GRID_MARGIN + 2 * BEZEL   # 574 mm for 53 weeks, 174 mm for 13
+W = COLS * PITCH + 2 * GRID_MARGIN + 2 * BEZEL   # 604 mm for 56 columns, 204 mm for 16
 WALL = 3.0
 LIP = 6.0
 TILT = 28.0                    # screen lean-back from vertical (62 deg to the desk)
@@ -140,7 +144,7 @@ for n, wp in parts.items():
 asm = cq.Assembly()
 for n, wp in parts.items():
     asm.add(wp, name=n)
-asm.export(f"{out}/commit-tracker-{COLS}w.step")
+asm.export(f"{out}/commit-tracker-{COLS}col.step")
 meta = dict(W=W, LIP=LIP, TILT=TILT, FACE_L=FACE_L, DEPTH=DEPTH, face_top=face_top, DECK_Y=DECK_Y,
             GRILLE=[GRILLE_W, GRILLE_H], GRILLE_CY=grille_cy, KNOB=KNOB)
 json.dump(meta, open(f"{out}/meta.json", "w"), indent=1)

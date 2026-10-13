@@ -18,7 +18,17 @@ query($login: String!) {
 }
 ```
 
-`contributionLevel` is `NONE`, `FIRST_QUARTILE` … `FOURTH_QUARTILE` → levels 0–4. Refresh every 15–30 min; keep the last good result if a fetch fails. The year version shows the last 53 weeks; the 3-month version the last 13.
+`contributionLevel` is `NONE`, `FIRST_QUARTILE` … `FOURTH_QUARTILE` → levels 0–4. Refresh every 15–30 min; keep the last good result if a fetch fails. The year version shows the last 53 weeks; the 3-month version the last 13. The panels provide 3 more columns than that (56 and 16 in total).
+
+## Layout mapping
+
+The case shows every LED column of the panel chain, so the mapping from weeks to columns is software only. Define it as a small table in configuration: for each column, one of `week(n)`, `marker(colour)`, `status`, or `off`. Examples:
+
+- Default: weeks fill columns left to right, the last 3 columns reserved.
+- Marker bar: put a dim `marker` column in the middle (for example at the 6-month point) and shift the weeks around it.
+- Status / goal: use the spare columns for fetch status or today's progress.
+
+Row 7 (the 8th LED of every column) is hidden behind the bezel and stays off.
 
 ## Display
 

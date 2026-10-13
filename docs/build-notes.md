@@ -18,7 +18,7 @@ Buy one 8×8 pack first: check the LED pitch is 10 mm, including across the edge
 
 - Pitch 10 mm. Squares 8.6 mm with 1.4 mm webs, 1.5 mm corner radius.
 - Each 8-LED column is one week. Rows 0–6 = Sunday–Saturday (top to bottom, as on GitHub). Row 7 is hidden behind the bezel and stays off.
-- Panels chain left to right, oldest week on the left; the rightmost column is the current week, partly filled.
+- Panels chain left to right. Year: one 8×32 then three 8×8 (56 columns); quarter: two 8×8 (16 columns). The weeks, plus any marker or status columns, are laid onto the columns in firmware, so the layout can change without touching the case.
 
 ## Wiring (plan)
 
@@ -35,7 +35,7 @@ Firmware caps total current at about 2 A (FastLED `setMaxPowerInVoltsAndMilliamp
 
 ## Printing
 
-- Full year: 574 mm wide, so the body must be split into sections with dovetails or pins. The 3-month body (174 × 215 mm) fits a 220 mm bed in one piece.
+- Full year: 604 mm wide, so the body must be split into sections with dovetails or pins. The quarter body (204 × 215 mm) fits a 220 mm bed in one piece.
 - Print the egg-crate grid in **black** (or ≥1.2 mm walls if white) to stop light bleeding between days.
 - Grille: white PLA, face down on a smooth sheet. For aluminium, laser-cut 1.5–2 mm brushed sheet from a DXF of the grille.
 

@@ -14,9 +14,9 @@ Tested with Python 3.13 on Linux. The first install pulls several hundred MB of 
 ## Edit, build, inspect
 
 1. Change a parameter near the top of `cad/case_tracker.py` (tilt, bend radius, window size, depth, bezel).
-2. Build: `WEEKS=13 python cad/case_tracker.py /tmp/out` (about a minute; `WEEKS=53` for the full year).
+2. Build: `COLS=16 python cad/case_tracker.py /tmp/out` (about a minute; `COLS=56` for the full year).
 3. Open `body.stl` and the other STLs in a slicer or mesh viewer, or the `.step` assembly in FreeCAD to check dimensions and wall thickness.
-4. The script prints the key dimensions as JSON (`W` must be 574.0 for 53 weeks, 174.0 for 13).
+4. The script prints the key dimensions as JSON (`W` must be 604.0 for 56 columns, 204.0 for 16).
 5. When it looks right, rebuild into `cad/exports/year` and `cad/exports/quarter` and commit the result.
 
 ## Notes on the model
@@ -26,4 +26,4 @@ Tested with Python 3.13 on Linux. The first install pulls several hundred MB of 
 - Fillets are applied by selecting edges with a bounding box at a profile vertex. If you move a vertex, the box has to follow it, or the fillet silently misses.
 - OpenCASCADE fillets fail when a radius is larger than the adjacent face allows. The usual fixes are a smaller radius, or filleting before cutting windows and pockets (as the script does).
 - STL export uses `tolerance=0.05`, `angularTolerance=0.2`. Tighten them for smoother curves at the cost of file size.
-- The full-year body is 574 mm wide, so it must be split for printing; the 3-month body fits a 220 mm bed.
+- The full-year body is 604 mm wide, so it must be split for printing; the quarter body (204 mm) fits a 220 mm bed.
