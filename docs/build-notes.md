@@ -62,7 +62,7 @@ Face-local depth below the outer face; all values come from `cad/case_tracker.py
   - paint or print everything behind the grille black;
   - keep the foam sheet continuous across the panel;
   - do not leave any gap between grid and diffuser.
-- **Side cap:** the +X end wall is a separate part with a locating lip. Bond with CA or a solvent weld after the internals are in. It lets the shell print on its side (see below).
+- **Side cap:** the +X end wall is a separate part with a locating lip. Bond it with CA or epoxy **before** the internals go in and before painting. The internals are fitted from below through the base opening. It lets the shell print on its side (see below).
 - **Encoder:** EC11 with M7 bushing, nut inside, 7.4 mm hole with a notch for the anti-rotation lug. The knob sits 0.8 mm above the deck with a counterbore over the bushing and a D-bore. **Check `ENC_SHAFT`** (shaft length above the bushing) against the encoder you buy; the knob height follows from it.
 - **ESP32 and USB:** a cradle on the base holds a 52 × 28.5 mm devkit with its USB end at the back wall. The USB slot is 14 × 9 mm at 9 mm height, on the opposite side from the knob. Set `USB_W`, `USB_H`, `USB_Y` from the real cable plug.
 - **To verify on real parts:** 8×8 panel thickness (listing says 5 mm, the 8×32 says 2 mm), encoder shaft length, USB plug size, devkit outline.
@@ -74,4 +74,54 @@ Face-local depth below the outer face; all values come from `cad/case_tracker.py
 - **Window:** the opening is a 70 mm bridge in this orientation; add a small support bridge.
 - **Settings:** 0.12 mm layers, 0.4 mm nozzle, seam on the hidden rear wall, then fill, sand 220 to 400, prime and spray.
 - **Black parts:** grid, backer and the inside of the shell; print black or paint.
+- **Material:** matte or standard PLA, not silk (gloss shows layer lines). PETG or ASA only if the unit will live somewhere warm. PLA softens at about 55 °C. Screw posts can crack in PLA: self-tapping M2.5 screws, not overtightened, or M2.5 heat-set inserts.
+
+## Joining
+
+| Part | Held by |
+|---|---|
+| Grille and diffuser | Bonded into the pocket (CA or epoxy on the ledge, double-sided tape for the diffuser film) |
+| Grid, panels, foam, backer | M2.5 screws only, no glue, so it can be serviced |
+| Base | 6 M2.5 screws; removing it gives access to everything from below |
+| Side cap | Bonded (CA or epoxy), before the internals and before painting |
+| Encoder | Nut inside |
+| Knob | Friction on the D-bore; a drop of CA or an M3 grub screw if it slips |
+
+## Colours (white prototype)
+
+| Part | Colour |
+|---|---|
+| Body and side cap | White (same filament batch) |
+| Grille | White |
+| Diffuser | Smoked or dark-tinted film or acrylic, 20 to 30 % transmission (not printed) |
+| Grid, backer, foam | Black, opaque |
+| Base | Black, so the shadow line under the body reads dark |
+| Knob | White (or black for contrast) |
+
+White PLA is translucent. If the grille border glows near the LED rows, paint the back of the grille and the inside of the shell matte black.
+
+## Finishing
+
+Target: satin white, no gloss. Gloss shows every layer line and sink mark.
+
+| Part | Finish |
+|---|---|
+| Body and side cap | Full paint finish (steps below) |
+| Grille | Print face down on smooth PEI or glass. Light sand, one thin primer coat and satin white, or leave raw matte PLA. Keep paint out of the window edges |
+| Knob | Sand and satin white, or leave raw |
+| Grid, backer, base, foam | None. Matte black filament as printed |
+| Diffuser | Not printed |
+
+Body and cap, in order:
+1. Bond the cap and fill the seam (thin CA or spot putty), then sand flush.
+2. Degrease with isopropyl, then high-build filler primer, 2 to 3 light coats, 10 minutes apart.
+3. Wet-sand 320, then 400, then 600 grit. Re-prime low spots and repeat until even.
+4. Final primer coat, light 800 grit wet sand.
+5. Satin white, 2 to 3 thin coats, 10 minutes apart.
+6. Optional satin clear coat.
+
+Notes:
+- Paint thickness takes up the 0.15 mm fits. Mask or leave bare the grille pocket, the opening for the grid, the cap lip, the post holes and the encoder hole, and sand any paint off them.
+- Print a small coupon with the fit features first to see how much the paint changes the clearances.
+- Level A (prototype): print on its side, light sand (400), one primer coat, 2 coats satin white. Level B (show piece): the full filler and wet-sand cycle, once the geometry is final.
 
