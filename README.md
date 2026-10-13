@@ -24,7 +24,7 @@ Both are generated from one parametric script: `COLS=56` or `COLS=16`. The case 
 
 ## The case
 
-Front to back: white grille with 8.6 mm rounded square windows → smoked black diffuser → 10 mm egg-crate grid → LED panels → hollow wedge body, ESP32 in the plinth, USB-C at the back, recessed base plate.
+Front to back: white grille with 8.6 mm rounded square windows → smoked black diffuser → 10 mm black egg-crate grid that seats the LED panels → foam → backer plate on M2.5 posts → hollow wedge body, ESP32 on a cradle in the plinth, USB slot at the back, rotary encoder knob on the deck, recessed base plate. A separate side cap lets the shell print on its side for smooth folds. Details and fits are in `docs/build-notes.md`.
 
 Design rules (applied throughout the CAD):
 - Screen at 62° to the desk; flat 16 mm top; back flank at 30° with a 60 mm sweep into a 35 mm plinth.

@@ -27,3 +27,6 @@ Tested with Python 3.13 on Linux. The first install pulls several hundred MB of 
 - OpenCASCADE fillets fail when a radius is larger than the adjacent face allows. The usual fixes are a smaller radius, or filleting before cutting windows and pockets (as the script does).
 - STL export uses `tolerance=0.05`, `angularTolerance=0.2`. Tighten them for smoother curves at the cost of file size.
 - The full-year body is 604 mm wide, so it must be split for printing; the quarter body (204 mm) fits a 220 mm bed.
+- Fits and mounting live in a block of constants near the top of the script (`FIT`, `LIP_W`, `PAD_T`, `BOSS_R`, `FOAM_T`, `ENC_*`, `USB_*`, `ESP_*`). After changing one, rebuild and re-run an interference check: intersect every pair of parts and expect volume 0 for all of them. Parts that merely touch intersect with zero volume.
+- Face-local coordinates (`on_face`): z = 0 on the outer face and negative behind it, so the stack from the grille to the backer reads as plain depths.
+- The body, side cap and base are separate solids; the cap lip is derived from the cavity profile so it follows the sweep radii.

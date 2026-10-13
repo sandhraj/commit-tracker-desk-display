@@ -43,3 +43,35 @@ Firmware caps total current at about 2 A (FastLED `setMaxPowerInVoltsAndMilliamp
 
 - Satin white like vintage Braun: sand 220 → 400, prime, spray satin white.
 - Brushed aluminium option: wrap the body skin in brushed-aluminium vinyl along its length, or have the skin bent from 1.5 mm brushed sheet (constant 8 mm bends suit a press brake).
+
+## Assembly stack (front to back)
+
+Face-local depth below the outer face; all values come from `cad/case_tracker.py`.
+
+| Part | Depth (mm) | Notes |
+|---|---|---|
+| Grille, white | 0 to -2.0 | Bonded into the pocket (0.15 mm per side clearance) |
+| Diffuser, smoked | -2.0 to -2.5 | Bonded on the ledge behind the grille |
+| Grid, black | -2.5 to -14.5 | Cells 8.4 mm, walls 1.6 mm (wider than the 1.4 mm grille web). Row 8 is a solid block. Fits the opening with 0.15 mm per side |
+| LED panels | -12.5 to -14.5 | Seated in a rim on the back of the grid, so LED centres sit in the cells to ±0.15 mm |
+| Foam sheet, black, 1 mm | -14.5 to -15.5 | Compresses to about 0.5 mm. Closes the gap at the panel and grid |
+| Backer, black | -15.5 to -18.5 | Screwed to the posts. Stops short of the bottom edge so the panel leads exit freely |
+
+- **Posts and screws:** M2.5 self-tapping screws, 8 mm long, into 2.1 mm pilots. Quarter 6, year 8. Six more M2.5 screws hold the base plate (posts hang from the deck and back flank).
+- **Light-bleed rules:**
+  - paint or print everything behind the grille black;
+  - keep the foam sheet continuous across the panel;
+  - do not leave any gap between grid and diffuser.
+- **Side cap:** the +X end wall is a separate part with a locating lip. Bond with CA or a solvent weld after the internals are in. It lets the shell print on its side (see below).
+- **Encoder:** EC11 with M7 bushing, nut inside, 7.4 mm hole with a notch for the anti-rotation lug. The knob sits 0.8 mm above the deck with a counterbore over the bushing and a D-bore. **Check `ENC_SHAFT`** (shaft length above the bushing) against the encoder you buy; the knob height follows from it.
+- **ESP32 and USB:** a cradle on the base holds a 52 × 28.5 mm devkit with its USB end at the back wall. The USB slot is 14 × 9 mm at 9 mm height, on the opposite side from the knob. Set `USB_W`, `USB_H`, `USB_Y` from the real cable plug.
+- **To verify on real parts:** 8×8 panel thickness (listing says 5 mm, the 8×32 says 2 mm), encoder shaft length, USB plug size, devkit outline.
+
+## Print orientation and finish
+
+- **Orientation:** print the shell **on its side, open side up** (X axis vertical). Every fold and the long R60 sweep become vertical walls, so there is no stair-stepping on the curved surfaces. Measured on the mesh: shallow-slope area drops from 471 cm² (as modelled) to 8 cm², and with the side cap off the cavity ceiling is gone, so no supports.
+- **Year size:** the shell is sectioned anyway; print each slice the same way.
+- **Window:** the opening is a 70 mm bridge in this orientation; add a small support bridge.
+- **Settings:** 0.12 mm layers, 0.4 mm nozzle, seam on the hidden rear wall, then fill, sand 220 to 400, prime and spray.
+- **Black parts:** grid, backer and the inside of the shell; print black or paint.
+
